@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        h1{
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <h1>Manipulação do DOM</h1>
+    <p id="demo">Bem-vindo ao Coding Dojo!</p>
+    <button id="changeText" onclick="changestyle()"> Alterar texto</button>
+
+</body>
+<script>
+function changestyle() {
+    document.getElementById("demo").textContent = "olá mundo"
+
+}
+</script>
+</html>
