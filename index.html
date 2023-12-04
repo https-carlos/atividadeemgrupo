@@ -6,13 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
+        body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 50px;
+            background-color: rgb(160, 196, 184);
         }
-        h1{
-            color: #007BFF;
+        h1 {
+            color: #000000;
+        }
+        .completed {
+            text-decoration: line-through;
         }
     </style>
 </head>
@@ -20,12 +24,63 @@
     <h1>Manipulação do DOM</h1>
     <p id="demo">Bem-vindo ao Coding Dojo!</p>
     <button id="changeText" onclick="changestyle()"> Alterar texto</button>
-
+    <hr>
+    <input id="input" type="text"> 
+    <input id="data" type="date">
+    <button id="adicionar" onclick="adicionar()">Adicionar</button>
+    <button id="excluir" onclick="remover()">Remover</button>
+    <ul id="lista">
+    </ul>
+    <hr>
 </body>
 <script>
 function changestyle() {
-    document.getElementById("demo").textContent = "olá mundo"
+    document.getElementById("demo").textContent = "olá mundo";
+}
 
+let paragrafo = document.getElementById("demo");
+
+function alterarestilo(){
+    paragrafo.style.backgroundColor = "gray";
+}
+
+function alterarestilo2(){
+    paragrafo.style.backgroundColor = "";
+}
+
+paragrafo.addEventListener("mouseover",alterarestilo);
+paragrafo.addEventListener("mouseout",alterarestilo2);
+
+let lista = document.getElementById("lista");
+let input = document.getElementById("input");
+let data = document.getElementById("data");
+
+function adicionar(){
+
+    let novoItem = document.createElement("li");
+    novoItem.textContent = `${input.value} - ${data.value}`;
+
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.addEventListener("change", function() {
+        if (checkbox.checked) {
+            novoItem.classList.add("completed");
+            lista.appendChild(novoItem);
+        } else {
+            novoItem.classList.remove("completed");
+            lista.insertBefore(novoItem, lista.firstChild);
+        }
+    });
+    
+    novoItem.appendChild(checkbox);
+    lista.insertBefore(novoItem, lista.firstChild);
+}
+
+function remover(){
+    let itens = lista.getElementsByTagName("li");
+    if (itens.length > 0) {
+        lista.removeChild(itens[itens.length - 1]);
+    }
 }
 </script>
 </html>
