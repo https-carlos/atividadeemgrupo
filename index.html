@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200&display=swap" rel="stylesheet">
     <title>Document</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Crimson Pro', serif;
             text-align: center;
             margin: 50px;
             background-color: rgb(160, 196, 184);
@@ -21,7 +23,7 @@
     </style>
 </head>
 <body>
-    <h1>Manipulação do DOM</h1>
+    <h1>Manipulação do DOM</h1> 
     <p id="demo">Bem-vindo ao Coding Dojo!</p>
     <button id="changeText" onclick="changestyle()"> Alterar texto</button>
     <hr>
@@ -76,11 +78,16 @@ function adicionar(){
     lista.insertBefore(novoItem, lista.firstChild);
 }
 
-function remover(){
-    let itens = lista.getElementsByTagName("li");
-    if (itens.length > 0) {
-        lista.removeChild(itens[itens.length - 1]);
+function remover() {
+    let itensConcluidos = lista.getElementsByClassName("completed");
+    
+    if (itensConcluidos.length > 0) {
+        while (itensConcluidos.length > 0) {
+            lista.removeChild(itensConcluidos[0]);
+        }
+ 
     }
 }
+
 </script>
 </html>
